@@ -7,7 +7,7 @@ let tiles = [];
 let selectedTiles = [];
 let score = 0;
 let moves = 0;
-let timeLeft = 45;
+let timeLeft = 50;
 let timerId;
 
 function initializeBoard() {
@@ -68,7 +68,7 @@ function checkTiles() {
 function updateTimer() {
     if (timeLeft > 0) {
         timeLeft--;
-        timeDisplay.textContent = `Tiempo restante: ${timeLeft}`;
+        timeDisplay.textContent = `Tiempo : ${timeLeft}`;
     } else {
         endGame();
     }
@@ -87,7 +87,7 @@ function resetGame() {
     score = 0;
     moves = 0;
     timeLeft = 30;
-    timeDisplay.textContent = 'Tiempo restante: 30';
+    timeDisplay.textContent = 'Tiempo: 50';
     scoreDisplay.textContent = 'Aciertos: 0';
     movesDisplay.textContent = 'Movimientos: 0';
     initializeBoard();
