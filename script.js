@@ -47,10 +47,12 @@ function checkTiles() {
     if (num1 === num2) {
         score++;
         scoreDisplay.textContent = `Aciertos: ${score}`;
-        tile1.removeEventListener('click', selectTile);
-        tile2.removeEventListener('click', selectTile);
+        tile1.removeEventListener('click', () => selectTile(tile1));
+        tile2.removeEventListener('click', () => selectTile(tile2));
         tile1.style.backgroundColor = 'green';
         tile2.style.backgroundColor = 'green';
+        tile1.classList.add('matched');
+        tile2.classList.add('matched');
     } else {
         tile1.textContent = '';
         tile2.textContent = '';
@@ -61,32 +63,52 @@ function checkTiles() {
     selectedTiles = [];
 
     if (score === 12) {
-        endGame();
+        endGame(true);  // Ganas el juego
     }
 }
 
 function updateTimer() {
     if (timeLeft > 0) {
         timeLeft--;
-        timeDisplay.textContent = `Tiempo : ${timeLeft}`;
+        timeDisplay.textContent = `Tiempo: ${timeLeft}`;
     } else {
-        endGame();
+        endGame(false);  // Pierdes el juego
     }
 }
 
-function endGame() {
+function endGame(isWin) {
     clearInterval(timerId);
-    alert(`¡Juego terminado! Aciertos: ${score}, Movimientos: ${moves}`);
-    resetGame();
+    
+    // Eliminar cualquier tema anterior
+    document.body.classList.remove('victory', 'defeat');
+    
+    // Aplicar el tema adecuado
+    if (isWin) {
+        document.body.classList.add('victory');
+        setTimeout(() => {
+            alert(`¡Felicidades! Ganaste el juego en ${moves} movimientos.`);
+            resetGame();
+        }, 500);
+    } else {
+        document.body.classList.add('defeat');
+        setTimeout(() => {
+            alert('¡Tiempo agotado! Intenta de nuevo.');
+            resetGame();
+        }, 500);
+    }
 }
 
 function resetGame() {
+    // Eliminar cualquier tema aplicado
+    document.body.classList.remove('victory', 'defeat');
+
+    // Resto de la lógica para reiniciar el juego
     tiles.forEach(tile => board.removeChild(tile));
     tiles = [];
     selectedTiles = [];
     score = 0;
     moves = 0;
-    timeLeft = 30;
+    timeLeft = 50;
     timeDisplay.textContent = 'Tiempo: 50';
     scoreDisplay.textContent = 'Aciertos: 0';
     movesDisplay.textContent = 'Movimientos: 0';

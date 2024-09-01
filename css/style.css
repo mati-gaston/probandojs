@@ -81,3 +81,48 @@ body {
         font-size: 20px;
     }
 }
+
+/* Tema para victoria */
+body.victory {
+    background: linear-gradient(135deg, #4caf50, #81c784);
+}
+
+body.victory .game-info {
+    background-color: #66bb6a;
+    color: white;
+    border: 2px solid #388e3c;
+}
+
+body.victory .tile.matched {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Tema para derrota */
+body.defeat {
+    background: linear-gradient(135deg, #f44336, #e57373);
+}
+
+body.defeat .game-info {
+    background-color: #e57373;
+    color: white;
+    border: 2px solid #c62828;
+}
+
+body.defeat .tile {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+body.defeat .tile.selected {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #c62828;
+}
+
+/* Transiciones para cambios de tema */
+body {
+    transition: background 0.5s ease-in-out;
+}
+
+.tile {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
