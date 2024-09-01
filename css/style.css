@@ -69,8 +69,10 @@ body {
 /* Media queries para dispositivos móviles */
 @media (max-width: 768px) {
     .container {
-        grid-template-columns: repeat(3, 80px);
+        grid-template-columns: repeat(3, 1fr); /* Usa fr para que las columnas se ajusten al tamaño disponible */
         grid-template-rows: repeat(5, 80px);
+        width: 100%; /* Asegura que ocupe todo el ancho disponible */
+        padding: 10px; /* Ajusta el padding para evitar que se corte en los bordes */
     }
 
     .tile {
