@@ -69,10 +69,13 @@ body {
 /* Media queries para dispositivos móviles */
 @media (max-width: 768px) {
     .container {
-        grid-template-columns: repeat(3, 1fr); /* Usa fr para que las columnas se ajusten al tamaño disponible */
-        grid-template-rows: repeat(5, 80px);
-        width: 100%; /* Asegura que ocupe todo el ancho disponible */
-        padding: 10px; /* Ajusta el padding para evitar que se corte en los bordes */
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: 5px; /* Reduce el espacio entre los elementos */
+        width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+        max-width: 300px; /* Limita el ancho máximo en pantallas pequeñas */
+        justify-content: center; /* Asegura que esté centrado */
+        padding: 10px; /* Reduce el padding en móviles */
     }
 
     .tile {
